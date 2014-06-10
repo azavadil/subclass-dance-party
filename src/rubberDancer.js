@@ -13,7 +13,7 @@ RubberDancer.prototype = Object.create(Dancer.prototype);
 RubberDancer.prototype.constructor = BlinkyDancer;  
 
 RubberDancer.prototype.step = function(){ 
-  this._oldStep.call(this); 
+  Dancer.prototype.step.call(this); 
   this._scale(); 
 };
 

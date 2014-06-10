@@ -13,7 +13,7 @@ StretchDancer.prototype = Object.create(Dancer.prototype);
 StretchDancer.prototype.constructor = BlinkyDancer;  
 
 StretchDancer.prototype.step = function(){ 
-  this._oldStep.call(this); 
+  Dancer.prototype.step.call(this); 
   this._stretch(); 
 };
 

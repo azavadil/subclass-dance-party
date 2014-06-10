@@ -1,6 +1,5 @@
 var JumpyDancer = function(top, left, timeBetweenSteps){
   // this = Object.create(BlinkyDancer.prototype);
-  this._oldStep = Dancer.prototype.step; 
   
   Dancer.apply(this, [top, left, timeBetweenSteps]);
   // we plan to overwrite the step function below, but we still want the superclass step behavior to work,
@@ -13,7 +12,7 @@ JumpyDancer.prototype = Object.create(Dancer.prototype);
 JumpyDancer.prototype.constructor = BlinkyDancer;  
 
 JumpyDancer.prototype.step = function(){ 
-  this._oldStep.call(this); 
+  Dancer.prototype.step.call(this); 
   this._jump(); 
 };
 

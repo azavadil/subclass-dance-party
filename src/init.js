@@ -53,9 +53,9 @@ $(document).ready(function(){
           var danceColor = window.danceColors[window.danceColorCnt % 5]; 
           window.danceColorCnt++;       
           curDancer.dance(danceColor); 
-          curDancer.setParter(true); 
+          curDancer.setPartner(true); 
           window.dancers[closestIdx].dance(danceColor); 
-          window.dancers[closestIdx].setParter(true); 
+          window.dancers[closestIdx].setPartner(true); 
         } 
       }
     }  
@@ -86,7 +86,9 @@ $(document).ready(function(){
     var dancer = new dancerMakerFunction(
       $("body").height() * Math.random(),
       $("body").width() * Math.random(),
-      Math.random() * 1000
+      Math.random() * 1000,
+      $("body").height(), 
+      $("body").width()
     );
     $('body').append(dancer.$node);
     window.dancers.push(dancer);
