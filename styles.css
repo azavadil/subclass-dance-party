@@ -43,8 +43,14 @@ body, a:link, a:visited, a:active{
   width: 80px; 
 }
 
-
-
+.rubberDancer {
+  border:0px solid orange;
+  background-image: url(static/tweety.gif);
+  background-repeat: no repeat; 
+  background-size: cover;   
+  min-height: 80px; 
+  width: 80px; 
+}
 
 .jumpyDancer{
   border:0px solid orange;
