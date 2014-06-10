@@ -1,5 +1,14 @@
 $(document).ready(function(){
   window.dancers = [];
+  
+  $("#lineupBtn").on("click", function(event){ 
+    console.log("lineup button clicked"); 
+    console.log("length " + window.dancers.length); 
+    for( var i = 0; i < window.dancers.length; i++){ 
+      var dancer = window.dancers[i]; 
+      dancer.lineup(); 
+    }
+  }); 
 
   $(".addDancerButton").on("click", function(event){
     /* This function sets up the click handlers for the create-dancer
