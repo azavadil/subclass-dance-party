@@ -1,5 +1,36 @@
 $(document).ready(function(){
   window.dancers = [];
+  
+  // calculate the pythagrean distance between 2 nodes; 
+  var pythagDist = function(node0, node1){ 
+    var pos0 = node0.position(); 
+    var pos1 = node1.position(); 
+    
+    var xLen = pos0.left - pos1.left; 
+    var yLen = pos0.top - pos1.top; 
+    return Math.sqrt( xLen*xLen + yLen*yLen); 
+   }; 
+   
+   var closestNode = function(nodeIdx, dancers){ 
+     
+     var curNode = dancers[nodeIdx]; 
+     var bestIdx = -1; 
+     var minDist = Number.POSITIVE_INFINITY; 
+     
+     for( var i = 0; i < dancers.length; i++ ) { 
+       if( nodeIdx !== i ){ 
+         var otherNode = dancers[i]; 
+         var newDist = pythagDist(curNode, otherNode); 
+         if( newDist < minDist ){ 
+           minDist = newDist; 
+           bestIdx = i; 
+         } 
+       } 
+     } 
+     return i; 
+   }; 
+         
+    
 
   $("#lineupBtn").on("click", function(event){
     console.log("lineup button clicked");

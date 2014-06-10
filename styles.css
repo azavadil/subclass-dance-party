@@ -20,6 +20,13 @@ body, a:link, a:visited, a:active{
 .title{
   background-color: #777;
 }
+
+.mainDisco { 
+  background-image: url(static/disco.jpg);
+  background-repeat: no repeat; 
+  background-size: cover;   
+} 
+
 .dancer{
   border:10px solid red;
   border-radius:10px;
