@@ -1,11 +1,14 @@
 $(document).ready(function(){
   window.dancers = [];
-  
+  window.danceColors = ['white','red','green','blue','yellow', 'orange']; 
+  window.danceColorCnt = 0; 
   // calculate the pythagrean distance between 2 nodes; 
+  
   var pythagDist = function(node0, node1){ 
+    
     var pos0 = node0.position(); 
     var pos1 = node1.position(); 
-    
+    console.log("pos0: " + pos0 + "pos1" + pos1); 
     var xLen = pos0.left - pos1.left; 
     var yLen = pos0.top - pos1.top; 
     return Math.sqrt( xLen*xLen + yLen*yLen); 
@@ -33,13 +36,28 @@ $(document).ready(function(){
   
 
   $("#lineupBtn").on("click", function(event){
-    console.log("lineup button clicked");
-    console.log("length " + window.dancers.length);
     for( var i = 0; i < window.dancers.length; i++){
       var dancer = window.dancers[i];
       dancer.lineup();
     }
   });
+   
+  $("#danceBtn").on("click", function(evt){ 
+    for( var i = 0; i < window.dancers.length; i++){ 
+      var curDancer = window.dancers[i];
+      var curIdx = i; 
+      var closestIdx = closestNode( curIdx, window.dancers);
+      if( !window.dancers[closestIdx].hasPartner() ){ 
+        var danceColor = window.danceColors[window.danceColorCnt % 5]; 
+        window.danceColorCnt++;       
+        curDancer.dance(danceColor); 
+        curDancer.setParter(true); 
+        window.dancers[closestIdx].dance(danceColor); 
+        window.dancers[closestIdx].setParter(true); 
+      } 
+    }  
+   });      
+  
 
   $(".addDancerButton").on("click", function(event){
     /* This function sets up the click handlers for the create-dancer

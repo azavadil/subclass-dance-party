@@ -10,6 +10,7 @@ var Dancer = function(top, left, timeBetweenSteps){
   // call the setPosition method to
   // set the inital position of the dancer
   this.setPosition(top, left);
+  this._hasPartner = false; 
 };
 
 Dancer.prototype.step = function(){
@@ -39,3 +40,14 @@ Dancer.prototype.lineup = function(){
   this.$node.css(newPos);
 };
 
+Dancer.prototype.dance = function(color){
+  this.$node.css({'border': '1px solid ' + color}); 
+}; 
+
+Dancer.prototype.setPartner = function( value ) { 
+  this._hasPartner = value; 
+}; 
+
+Dancer.prototype.getPartner = function(){ 
+  return this._hasPartner; 
+}; 
