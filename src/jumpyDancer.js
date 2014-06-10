@@ -6,7 +6,7 @@ var JumpyDancer = function(top, left, timeBetweenSteps){
   // we plan to overwrite the step function below, but we still want the superclass step behavior to work,
   // so we must keep a copy of the old version of this func   tion
   this._toggle = true; 
-  this.$node.css({'border': '10px solid orange'});
+  //this.$node.css({'border': '10px solid orange'});  
   this.$node.addClass("jumpyDancer"); 
 }; 
 

@@ -25,3 +25,20 @@ body, a:link, a:visited, a:active{
   border-radius:10px;
   position:absolute;
 }
+
+
+
+
+.xjumpyDancer { 
+  border: 10px solid orange; 
+  border-radius: 10px; 
+  position: absolute; 
+} 
+
+.jumpyDancer{
+  border:0px solid black;
+  background-image: url("Mickey.jpg"); 
+  position:absolute;
+}
+
+.
