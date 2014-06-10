@@ -8,29 +8,29 @@ $(document).ready(function(){
     
     var pos0 = node0.position(); 
     var pos1 = node1.position(); 
-    console.log("pos0: " + pos0 + "pos1" + pos1); 
     var xLen = pos0.left - pos1.left; 
     var yLen = pos0.top - pos1.top; 
     return Math.sqrt( xLen*xLen + yLen*yLen); 
    }; 
    
    var closestNode = function(nodeIdx, dancers){ 
-     
-     var curNode = dancers[nodeIdx]; 
+     console.log("closestNode called"); 
+     var curDancer = dancers[nodeIdx]; 
      var bestIdx = -1; 
      var minDist = Number.POSITIVE_INFINITY; 
      
+     
      for( var i = 0; i < dancers.length; i++ ) { 
        if( nodeIdx !== i ){ 
-         var otherNode = dancers[i]; 
-         var newDist = pythagDist(curNode, otherNode); 
-         if( newDist < minDist ){ 
+         var otherDancer = dancers[i]; 
+         var newDist = pythagDist(curDancer.$node, otherDancer.$node); 
+         if( newDist < minDist ){
            minDist = newDist; 
            bestIdx = i; 
          } 
        } 
      } 
-     return i; 
+     return bestIdx; 
    }; 
          
   
@@ -45,16 +45,19 @@ $(document).ready(function(){
   $("#danceBtn").on("click", function(evt){ 
     for( var i = 0; i < window.dancers.length; i++){ 
       var curDancer = window.dancers[i];
-      var curIdx = i; 
-      var closestIdx = closestNode( curIdx, window.dancers);
-      if( !window.dancers[closestIdx].hasPartner() ){ 
-        var danceColor = window.danceColors[window.danceColorCnt % 5]; 
-        window.danceColorCnt++;       
-        curDancer.dance(danceColor); 
-        curDancer.setParter(true); 
-        window.dancers[closestIdx].dance(danceColor); 
-        window.dancers[closestIdx].setParter(true); 
-      } 
+      if( !curDancer.getPartner() ) { 
+        var curIdx = i; 
+        var closestIdx = closestNode( curIdx, window.dancers);
+        var otherDancer = window.dancers[closestIdx]; 
+        if( !otherDancer.getPartner() ){ 
+          var danceColor = window.danceColors[window.danceColorCnt % 5]; 
+          window.danceColorCnt++;       
+          curDancer.dance(danceColor); 
+          curDancer.setParter(true); 
+          window.dancers[closestIdx].dance(danceColor); 
+          window.dancers[closestIdx].setParter(true); 
+        } 
+      }
     }  
    });      
   
