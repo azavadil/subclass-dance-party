@@ -7,6 +7,7 @@ var JumpyDancer = function(top, left, timeBetweenSteps){
   // so we must keep a copy of the old version of this func   tion
   this._toggle = true; 
   this.$node.css({'border': '10px solid orange'});
+  this.$node.addClass("jumpyDancer"); 
 }; 
 
 JumpyDancer.prototype = Object.create(Dancer.prototype); 
@@ -14,6 +15,10 @@ JumpyDancer.prototype.constructor = BlinkyDancer;
 
 JumpyDancer.prototype.step = function(){ 
   this._oldStep.call(this); 
+  this._jump(); 
+};
+
+JumpyDancer.prototype._jump = function(){ 
   var oldPos = this.$node.position(); 
   var newPos = {}
   if( this._toggle ) { 
@@ -23,4 +28,4 @@ JumpyDancer.prototype.step = function(){
   }
   this._toggle = !this._toggle;      
   this.$node.css(newPos); 
-};
+};   
