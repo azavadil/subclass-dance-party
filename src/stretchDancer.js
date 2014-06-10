@@ -5,7 +5,8 @@ var StretchDancer = function(top, left, timeBetweenSteps){
   Dancer.apply(this, [top, left, timeBetweenSteps]);
   // we plan to overwrite the step function below, but we still want the superclass step behavior to work,
   // so we must keep a copy of the old version of this func   tion
-
+  this.$node.css({'border': '10px solid yellow'});
+  this._cnt = 0;   
 }; 
 
 StretchDancer.prototype = Object.create(Dancer.prototype); 
@@ -13,11 +14,17 @@ StretchDancer.prototype.constructor = BlinkyDancer;
 
 StretchDancer.prototype.step = function(){ 
   this._oldStep.call(this); 
-  if( this._toggle ) { 
-    newPos["top"] = oldPos.left + 10;  
-  } else { 
-    newPos["top"] = oldPos.left - 10; 
-  }
-  this._toggle = !this._toggle;      
-  this.$node.transform(newPos); 
+  
+
+  if ( this._cnt % 4 === 0 ) { 
+    this.$node.css({'transform': 'skew(0deg)'});
+  } else if ( this._cnt % 3 === 0  ) { 
+    this.$node.css({'transform': 'skew(330deg)'});
+  } else if ( this._cnt % 2 === 0 ) { 
+    this.$node.css({'transform': 'skew(0deg)'});   
+  } else if ( this._cnt % 2 === 1 ) { 
+    this.$node.css({'transform': 'skew(30deg)'});
+  } 
+  this._cnt++;      
+   
 };
