@@ -38,3 +38,4 @@ Dancer.prototype.lineup = function(){
   newPos["left"] = 10;
   this.$node.css(newPos);
 };
+

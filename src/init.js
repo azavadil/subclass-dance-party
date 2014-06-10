@@ -30,7 +30,7 @@ $(document).ready(function(){
      return i; 
    }; 
          
-    
+  
 
   $("#lineupBtn").on("click", function(event){
     console.log("lineup button clicked");
@@ -70,5 +70,8 @@ $(document).ready(function(){
     $('body').append(dancer.$node);
     window.dancers.push(dancer);
   });
+  
+
+  
 });
 
