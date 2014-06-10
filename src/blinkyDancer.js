@@ -16,4 +16,3 @@ BlinkyDancer.prototype.step = function(){
   this._oldStep.call(this);   
   this.$node.toggle();
 };
->>>>>>> temp
