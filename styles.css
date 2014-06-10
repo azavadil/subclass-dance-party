@@ -26,14 +26,25 @@ body, a:link, a:visited, a:active{
   position:absolute;
 }
 
+.blinkyDancer{
+  border:0px solid orange;
+  background-image: url(static/beavis.gif);
+  background-repeat: no repeat; 
+  background-size: cover;   
+  min-height: 80px; 
+  width: 80px; 
+}
+.stretchyDancer{
+  border:0px solid orange;
+  background-image: url(static/jesterbeavis.gif);
+  background-repeat: no repeat; 
+  background-size: cover;   
+  min-height: 160px; 
+  width: 80px; 
+}
 
 
 
-.xjumpyDancer { 
-  border: 10px solid orange; 
-  border-radius: 10px; 
-  position: absolute; 
-} 
 
 .jumpyDancer{
   border:0px solid orange;

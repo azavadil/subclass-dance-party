@@ -14,11 +14,12 @@ RubberDancer.prototype.constructor = BlinkyDancer;
 
 RubberDancer.prototype.step = function(){ 
   this._oldStep.call(this); 
-  
+};
+
+RubberDancer.prototype._scale = function(){ 
   if( this._toggle ) { 
-    this.$node.css({'width': '30px'}); 
+    this.$node.css({'scale': '1.2'}); 
   } else { 
-    this.$node.css({'width': '10px'}); 
+    this.$node.css({'scale': '1.0'}); 
   } 
   this._toggle = !this._toggle;     
-};
