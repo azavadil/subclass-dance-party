@@ -2,6 +2,9 @@ $(document).ready(function(){
   window.dancers = [];
   window.danceColors = ['white','red','green','blue','yellow', 'orange']; 
   window.danceColorCnt = 0; 
+  window.initHeight; 
+  window.initWidth; 
+  
   // calculate the pythagrean distance between 2 nodes; 
   
   var pythagDist = function(node0, node1){ 
@@ -82,14 +85,16 @@ $(document).ready(function(){
     var dancerMakerFunction = window[dancerMakerFunctionName];
 
     // make a dancer with a random position
-
+    
+    window.initHeight = $("body").height(); 
+    window.initWidth = $("body").width(); 
+    
     var dancer = new dancerMakerFunction(
       $("body").height() * Math.random(),
       $("body").width() * Math.random(),
-      Math.random() * 1000,
-      $("body").height(), 
-      $("body").width()
+      Math.random() * 1000
     );
+       
     $('body').append(dancer.$node);
     window.dancers.push(dancer);
   });

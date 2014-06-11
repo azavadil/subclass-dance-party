@@ -1,19 +1,17 @@
-var ParticleDancer = function(top, left, timeBetweenSteps, windowHeight, windowWidth){
+var ParticleDancer = function(top, left){
   // this = Object.create(BlinkyDancer.prototype);
-  this._windowHeight = windowHeight; 
-  this._windowWidth = windowWidth;   
   
-  Dancer.call(this, top, left, timeBetweenSteps);
+  Dancer.call(this, top, left, 50);
   // we plan to overwrite the step function below, but we still want the superclass step behavior to work,
   // so we must keep a copy of the old version of this function
-  this._xVelocity = Math.random()*10; 
-  this._yVelocity = Math.random()*10; 
+  this._xVelocity = 10; 
+  this._yVelocity = 10; 
   
 
 }; 
 
 ParticleDancer.prototype = Object.create(Dancer.prototype); 
-ParticleDancer.prototype.constructor = BlinkyDancer;  
+ParticleDancer.prototype.constructor = ParticleDancer;  
 
 ParticleDancer.prototype.step = function(){ 
   Dancer.prototype.step.call(this);  
@@ -23,14 +21,21 @@ ParticleDancer.prototype.step = function(){
 ParticleDancer.prototype._move = function(){ 
   var oldPos = this.$node.position(); 
   
+  // console.log("pos x : " + oldPos.left + "pos y: " + oldPos.top);   
+  
   var newTop = oldPos.top + this._xVelocity; 
   var newLeft = oldPos.left + this._yVelocity; 
   
-  if( newTop < 0 || newTop > this._windowHeight ) { 
-    this._yVelocity = -this._yVelocity; 
+  if( newTop < 0 || newTop > window.initHeight ) { 
+    this._yVelocity = -this._yVelocity;
+    newTop = newTop < 50 ? 50 : window.initHeight - 50;
   }
-  if( newLeft < 0 || newLeft > this._windowWidth ) { 
-    this._xVelocity = -this._xVelocity; 
-  }   
+  
+  if( newLeft < 0 || newLeft > window.initWidth ) { 
+    this._xVelocity = -this._xVelocity;
+    newLeft = newLeft < 50 ? 50 : window.initWidth - 50;  
+     
+  }
   this.setPosition(newTop, newLeft);
+   
 };   
